@@ -1,8 +1,2 @@
-# node-express-vercel
-Hosting express node project on vercel
-
-### Video
-> https://youtu.be/vCuf62T2snY
-
-### Deployed on
-> https://node-express-vercel-rose.vercel.app/home
+# Akihide Takei's Profile
+Welcome to the GitHub repository for Akihide Takei's Profile. This repository contains the HTML, CSS, and JS code for Akihide Takei's personal website.
