@@ -7,8 +7,8 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const port = process.env.PORT || 3000;
-const myEmail = process.env.EMAIL_USERNAME
-const myPassword = process.env.EMAIL_PASSWORD
+const myEmail = process.env.EMAIL_USERNAME;
+const myPassword = process.env.EMAIL_PASSWORD;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
