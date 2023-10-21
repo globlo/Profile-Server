@@ -1,19 +1,18 @@
+require("dotenv").config();
+
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
-const config = require('./config');
+// const config = require('./config');
 
 const app = express();
 const port = process.env.PORT || 3000;
+const myEmail = process.env.EMAIL_USERNAME
+const myPassword = process.env.EMAIL_PASSWORD
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/getRequest', (req, res) => {
-
-    res.send('Hello this is succesfull');
-
-});
 
 app.post('/send-email', (req, res) => {
     const { name, email, subject, message } = req.body;
@@ -22,14 +21,14 @@ app.post('/send-email', (req, res) => {
     const transporter = nodemailer.createTransport({
         service: 'Gmail', // e.g., 'Gmail'
         auth: {
-            user: config.email,
-            pass: config.password,
+            user: myEmail,
+            pass: myPassword,
         },
     });
 
     const mailOptions = {
         from: email,
-        to: config.email,
+        to: myEmaill,
         subject: subject,
         text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
     };
