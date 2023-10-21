@@ -14,18 +14,21 @@ app.use(bodyParser.json());
 app.post('/send-email', (req, res) => {
     const { name, email, subject, message } = req.body;
 
+    const myEmail = process.env.EMAIL_USERNAME;
+    const myPass = process.env.EMAIL_PASSWORD;
+
     // Replace with your email and SMTP settings
     const transporter = nodemailer.createTransport({
         service: 'Gmail', // e.g., 'Gmail'
         auth: {
-            user: process.env.EMAIL_USERNAME,
-            pass: process.env.EMAIL_PASSWORD,
+            user: myEmail,
+            pass: myPass,
         },
     });
 
     const mailOptions = {
         from: email,
-        to: process.env.EMAIL_USERNAME,
+        to: myEmail,
         subject: subject,
         text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
     };
