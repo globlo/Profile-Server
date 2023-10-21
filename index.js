@@ -7,12 +7,9 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const port = process.env.PORT || 3000;
-const myEmail = process.env.EMAIL_USERNAME;
-const myPassword = process.env.EMAIL_PASSWORD;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 
 app.post('/send-email', (req, res) => {
     const { name, email, subject, message } = req.body;
@@ -21,14 +18,14 @@ app.post('/send-email', (req, res) => {
     const transporter = nodemailer.createTransport({
         service: 'Gmail', // e.g., 'Gmail'
         auth: {
-            user: myEmail,
-            pass: myPassword,
+            user: process.env.EMAIL_USERNAME,
+            pass: process.env.EMAIL_PASSWORD,
         },
     });
 
     const mailOptions = {
         from: email,
-        to: myEmaill,
+        to: process.env.EMAIL_USERNAME,
         subject: subject,
         text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
     };
