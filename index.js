@@ -16,6 +16,7 @@ app.post('/send-email', (req, res) => {
 
     const myEmail = process.env.EMAIL_USERNAME;
     const myPass = process.env.EMAIL_PASSWORD;
+    const redirectURL = process.env.THNKYOU_URL;
 
     // Replace with your email and SMTP settings
     const transporter = nodemailer.createTransport({
@@ -40,7 +41,7 @@ app.post('/send-email', (req, res) => {
         } else {
             console.log('Email sent: ' + info.response);
             // res.status(200).send('Email sent successfully.');
-            res.redirect('https://profile-globlos-projects.vercel.app/thankyou.html');
+            res.redirect(redirectURL);
     
         }
     });
